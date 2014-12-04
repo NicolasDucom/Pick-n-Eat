@@ -1,0 +1,72 @@
+body {
+	background-image: url(../img/symphony.png);
+}
+nav {
+	background-color: #c21c00;
+}
+h2 {
+	font-family: 'Slabo 27px', serif;
+	text-align: center;
+	margin-top: 48px;
+}
+.brand-logo {
+	font-family: 'Amatic SC', cursive;
+	font-size: 54px !important;
+	margin-top: -2px;
+}
+#intro_show {
+	margin-top: 42px;
+	background-image: url(../img/intro.jpg);
+	background-size: cover;
+	height: 460px;
+	position: relative;
+	-moz-box-shadow: 0px 0px 4px 1px #cfcfcf;
+	-webkit-box-shadow: 0px 0px 4px 1px #cfcfcf;
+	-o-box-shadow: 0px 0px 4px 1px #cfcfcf;
+	box-shadow: 0px 0px 4px 1px #cfcfcf;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#cfcfcf, Direction=NaN, Strength=4);
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+#intro_text {
+	position: absolute;
+	bottom: 0;
+	color: white;
+	background: rgba(153, 153, 153, 0.5);
+	margin: 15px 20px 19px 10px;
+	padding: 20px;
+}
+.btn-black {
+	background-color: #000;
+}
+.btn-black:hover {
+	background-color: #565555;
+}
+.btn-green {
+	background-color: #30CF62;
+}
+.btn-green:hover {
+	background-color: #7FDF9D;
+}
+.btn-grey {
+	background-color: #bbb;
+}
+.btn-grey:hover {
+	background-color: #dbdbdb;
+}
+#choices {
+	
+}
+#loading {
+	text-align: center;
+	margin-top: 120px;
+	display: none;
+}
+#results {
+	display: none;
+}
+#retry {
+	text-align: center;
+	margin-top: 42px;
+}
