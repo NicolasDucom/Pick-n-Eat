@@ -1,0 +1,21 @@
+{
+    "name": "banderon1/social-api",
+    "type": "library",
+    "version": "1.0",
+    "description": "A simple way to integrate oauth and social sites like facebook, twitter, foursquare, yelp and linkedin into your PHP application.",
+    "keywords": ["facebook", "twitter", "foursquare", "yelp", "linkedin", "social", "oauth"],
+    "homepage": "https://github.com/banderon1/social-api",
+    "authors": [
+        {
+            "name": "Brian Anderson",
+            "email": "banderon1@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "facebook/php-sdk" : "*",
+        "j7mbo/twitter-api-php": "dev-master",
+        "jcroll/foursquare-api-client": "1.0.*",
+        "happyr/linkedin-api-client": "dev-master"
+    }
+}
