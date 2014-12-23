@@ -1,0 +1,4 @@
+success:
+    copy_build:
+        respect_ignore: false
+        directory: "/var/www/test"
