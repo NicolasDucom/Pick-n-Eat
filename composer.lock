@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fc2eb1d6828628aef5d0ae1c3a249be2",
+    "hash": "d579792e17908dd974a702b011f85a65",
     "packages": [
         {
             "name": "banderon1/social-api",
