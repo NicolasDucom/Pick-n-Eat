@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="{{ app.request.basepath }}/css/materialize.min.css" media="screen,projection"/>
+		<link type="text/css" rel="stylesheet" href="{{ app.request.basepath }}/css/style.css" media="screen,projection"/>
+		<link href='http://fonts.googleapis.com/css?family=Amatic+SC:400,700|Slabo+27px' rel='stylesheet' type='text/css'>
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="{{ app.request.basepath }}/css/animate.css" media="screen,projection"/>
+	</head>
+<body>
+	<nav>
+		<div class="container">
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">Pick'n'eat</a>
+				<ul id="nav-mobile" class="right side-nav">
+					<li><a href="{{ app.url_generator.generate('home') }}"><i class="fa fa-home"></i></a></li>
+					<li class="active"><a href="{{ app.url_generator.generate('random') }}" title="Random"><i class="fa fa-random"></i></a></li>
+					<li><a href="{{ app.url_generator.generate('choose') }}" title="Choose"><i class="fa fa-pencil"></i></a></li>
+				</ul>
+				<a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<h2>LET'S ROLL THE DICE.</h2>
+			</div>
+		</div>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="{{ app.request.basepath }}/js/materialize.min.js"></script>
+	<script type="text/javascript">
+	var x = document.getElementById("demo");
+	document.getElementById("myBtn").addEventListener("click", getRandomRestaurant);
+		function getRandomRestaurant() {
+		    if (navigator.geolocation) {
+		        //navigator.geolocation.getCurrentPosition(showPosition);
+				$.ajax({
+					url: "{{ app.url_generator.generate('getRandom') }}/"navigator.geolocation.getCurrentPosition().coords.latitude"/"navigator.geolocation.getCurrentPosition().coords.longitude,
+					type: "GET",
+					dataType: "json",
+					success: function (data) {
+						alert(data);
+					}
+				});
+		    } else { 
+		        x.innerHTML = "Geolocation is not supported by this browser.";
+		    }
+		}
+
+		function showPosition(position) {
+		    alert("Latitude: " + position.coords.latitude + 
+		    "<br>Longitude: " + position.coords.longitude);	
+		}
+    </script>
+	</script>
+</body>
+</html>
