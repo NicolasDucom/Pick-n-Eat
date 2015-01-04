@@ -29,19 +29,16 @@
 
 			<div id="results">
 				<div class="col s12">
-					<div class="card small" style="height: 470px;">
-						<div class="card-image" style="height: 320px;">
-							<img id="restaurant_image" src="assets/img/choose2.jpg">
-							<span id="restaurant_title" class="card-title"></span>
-						</div>  
+					<div class="card small" style="height: 470px; background: white;">
+						<span id="restaurant_title" class="card-title"></span>
 						<div class="card-content" style="background: white;">
-							<p>
-								Aesthetic organic irony, Cosby sweater swag try-hard meditation lo-fi blog flexitarian raw denim next level health goth mustache. Williamsburg cred authentic trust fund. Pickled seitan iPhone, semiotics mumblecore literally taxidermy. Pickled Marfa deep v, keffiyeh kitsch photo booth hella vinyl disrupt bitters Carles Wes Anderson forage. Cosby sweater swag try-hard meditation lo-fi blog flexitarian raw denim next level health goth mustache. Williamsburg cred authentic trust fund.	
-							</p>
+							<div id="map-canvas"></div>
+							<span id="restaurant_address"></span>
+							<img id="restaurant_rating" src="">
 						</div>
 						<div class="card-action">
-							<a href="#">Website</a>
-							<a href="#">Call +33(0)1 23 45 67 89</a>
+							<a href="#" id="restaurant_website">Website</a>
+							<a href="#" id="restaurant_phone"></a>
 						</div>
 					</div>
 					<p><a href="#" class="waves-effect waves-light btn-large btn-blue" id="replay_restaurant"><i class="fa fa-random"></i>Retry</a></p>
@@ -95,7 +92,19 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="{{ app.request.basepath }}/js/materialize.min.js"></script>
 	<script type="text/javascript" src="{{ app.request.basepath }}/js/random.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
 	<script type="text/javascript">
+		function initialize() {
+	        var mapCanvas = document.getElementById('map-canvas');
+	        var mapOptions = {
+	          center: new google.maps.LatLng(0, 0),
+	          zoom: 13,
+	          mapTypeId: google.maps.MapTypeId.ROADMAP
+	        }
+	        var map = new google.maps.Map(mapCanvas, mapOptions)
+	    }
+	    google.maps.event.addDomListener(window, 'load', initialize);
+
 		function getRandomRestaurant(position) {
 		$('#loading').show(1, function() {
 				$('#loading').addClass('animated bounceIn');
@@ -106,7 +115,21 @@
 			data: {longitude: position.coords.longitude,latitude:position.coords.latitude},
 			dataType: "json",
 			success: function (data) {
-				
+				if (typeof data.display_phone !== 'undefined') {
+   					document.getElementById("restaurant_phone").innerHTML = data.display_phone;
+				} else {
+   					document.getElementById("restaurant_phone").innerHTML = "No phone number available";
+				}
+				if (typeof data.location.display_address !== 'undefined') {
+   					document.getElementById("restaurant_address").innerHTML = data.location.display_address;
+				} else {
+   					document.getElementById("restaurant_address").innerHTML = "No address available";
+				}
+				document.getElementById("restaurant_title").innerHTML = data.name;	
+   				document.getElementById("restaurant_address").innerHTML = data.location.display_address;
+   				document.getElementById("restaurant_rating").src = data.rating_img_url_large;
+				gMap = new google.maps.Map(document.getElementById('map-canvas')); 
+				gMap.setCenter(new google.maps.LatLng(data.location.coordinate.latitude, data.location.coordinate.longitude));				
 			},
 			complete: function(){
         		$('#loading').fadeOut(420, function() {
