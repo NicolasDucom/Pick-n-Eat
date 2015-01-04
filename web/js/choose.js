@@ -3,8 +3,12 @@ var restaurants = false;
 var choosenRestaurant = false;
 
 $(function() {
+	$( document ).ready(function() {
+		$(".dropdown-button").dropdown();
+	});
+	
 	$('#add_restaurant').on('click', function() {
-		$('#restaurants_list').append('<li class="collection-item"><div><input id="restaurants['+(++numberOfRestaurants)+']" class="restaurant" type="text" required=""><label for="restaurants['+numberOfRestaurants+']">My restaurant</label></div></li>');
+		$('#restaurants_list').append('<li class="collection-item"><div><input id="restaurants['+(++numberOfRestaurants)+']" class="restaurant" type="text" required=""><label for="restaurants['+numberOfRestaurants+']">Restaurant</label></div></li>');
 	});
 
 	$('#go').on('click', function() {

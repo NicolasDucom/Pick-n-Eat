@@ -1,61 +1,38 @@
-<html>
-	<head>
-		<link type="text/css" rel="stylesheet" href="{{ app.request.basepath }}/css/materialize.min.css" media="screen,projection"/>
-		<link type="text/css" rel="stylesheet" href="{{ app.request.basepath }}/css/style.css" media="screen,projection"/>
-		<link href='http://fonts.googleapis.com/css?family=Amatic+SC:400,700|Slabo+27px' rel='stylesheet' type='text/css'>
-		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-		<link type="text/css" rel="stylesheet" href="{{ app.request.basepath }}/css/animate.css" media="screen,projection"/>
-	</head>
-<body>
-	<nav>
-		<div class="container">
-			<div class="nav-wrapper">
-				<a href="#" class="brand-logo">Pick'n'eat</a>
-				<ul id="nav-mobile" class="right side-nav">
-					<li><a href="{{ app.url_generator.generate('home') }}"><i class="fa fa-home"></i></a></li>
-					<li><a href="{{ app.url_generator.generate('random') }}" title="Random"><i class="fa fa-random"></i></a></li>
-					<li class="active"><a href="{{ app.url_generator.generate('choose') }}" title="Choose"><i class="fa fa-pencil"></i></a></li>
-				</ul>
-				<a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
-			</div>
-		</div>
-	</nav>
-
+{% include 'header.html.twig' %}
 	<div class="container">
 		<div class="row">
 			<div class="col s12">
-				<h2>TODAY, I CHOSE TO BE PICKY.</h2>
+				<h2>{{ app.translator.trans('lets_roll') }}</h2>
 			</div>
 		</div>
-
 		<div id="choices"class="row">
 			<div class="col s6 offset-s3">
 				<ul id="restaurants_list" class="collection">
 					<li class="collection-item">
 						<div>
 							<input id="restaurants[1]" class="restaurant" type="text" required="">
-							<label for="restaurants[1]">My first restaurant</label>
+							<label for="restaurants[1]">{{ app.translator.trans('first_restaurant') }}</label>
 						</div>
 					</li>
 					<li class="collection-item">
 						<div>
 							<input id="restaurants[2]" class="restaurant" type="text" required="">
-							<label for="restaurants[2]">My second restaurant</label>
+							<label for="restaurants[2]">{{ app.translator.trans('second_restaurant') }}</label>
 						</div>
 					</li>
 					<li class="collection-item">
 						<div>
 							<input id="restaurants[3]" class="restaurant" type="text" required="">
-							<label for="restaurants[3]">My third restaurant</label>
+							<label for="restaurants[3]">{{ app.translator.trans('third_restaurant') }}</label>
 						</div>
 					</li>
 				</ul>
 				<div id="buttons">
 					<p style="float:left; margin-top: 25px; margin-left: 30px;">
-						<a id="add_restaurant" class="waves-effect waves-light btn btn-grey"><i class="fa fa-plus"></i>Add...</a>
+						<a id="add_restaurant" class="waves-effect waves-light btn btn-grey"><i class="fa fa-plus"></i>{{ app.translator.trans('add_choose') }}</a>
 					</p>
 					<p style="float:right; margin-right: 30px;">
-						<a id="go" class="waves-effect waves-light btn-large btn-green"><i class="fa fa-check"></i>Go!</a>
+						<a id="go" class="waves-effect waves-light btn-large btn-green"><i class="fa fa-check"></i>{{ app.translator.trans('go_choose') }}</a>
 					</p>
 				</div>		
 			</div>
@@ -65,7 +42,7 @@
 			<div class="col s12">
 				<div class="card small" style="height: 470px;">
 					<div class="card-image" style="height: 320px;">
-						<img id="restaurant_image" src="assets/img/choose2.jpg">
+						<img id="restaurant_image" src="{{ app.request.basepath }}/img/choose2.jpg">
 						<span id="restaurant_title" class="card-title"></span>
 					</div>  
 					<div class="card-content" style="background: white;">
@@ -74,12 +51,12 @@
 						</p>
 					</div>
 					<div class="card-action">
-						<a href="#">Website</a>
-						<a href="#">Call +33(0)1 23 45 67 89</a>
+						<a href="#">{{ app.translator.trans('website') }}</a>
+						<a href="#">+33(0)1 23 45 67 89</a>
 					</div>
 				</div>
 				<p id="retry">
-					<a id="retry_button" class="waves-effect waves-light btn-large btn-black"><i class="fa fa-random"></i>Are you kidding me?</a>
+					<a id="retry_button" class="waves-effect waves-light btn-large btn-black"><i class="fa fa-random"></i>{{ app.translator.trans('retry_choose') }}</a>
 				</p>
 			</div>
 		</div>

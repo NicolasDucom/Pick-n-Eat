@@ -4,14 +4,12 @@ use Symfony\Component\Translation\Loader\YamlFileLoader;
 require_once __DIR__.'/../vendor/autoload.php';
 require_once ('../vendor/banderon1/social-api/yelp/lib/OAuth.php');
 
-
 class Application extends Silex\Application
 {
     use Silex\Application\TwigTrait;
 }
 
 $app = new Silex\Application();
-$app['debug'] = true;
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     // 'twig.path' => realpath("view"),
@@ -20,6 +18,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app->register(new Silex\Provider\TranslationServiceProvider(), array(
     'locale_fallbacks' => array('en'),
 ));
+$app['debug'] = true;
 $app['asset_path'] = $app->share(function () {
     return realpath("js");
 });
@@ -32,22 +31,23 @@ $app['translator'] = $app->share($app->extend('translator', function($translator
     return $translator;
 }));
 
+
 $app->get('/{_locale}', function() use ($app){
-    return $app['twig']->render('index.html.twig');
+    return $app['twig']->render('index.html.twig', ['active' => 'home']);
 })
 ->assert('_locale', 'fr|en')
 ->value('_locale', 'fr')
 ->bind('home');
 
 $app->get('/{_locale}/random', function() use ($app){
-    return $app['twig']->render('random.html.twig');
+    return $app['twig']->render('random.html.twig', ['active' => 'random']);
 })
 ->assert('_locale', 'fr|en')
 ->value('_locale', 'fr')
 ->bind('random');
 
 $app->get('/{_locale}/choose', function() use ($app){
-    return $app['twig']->render('choose.html.twig');
+    return $app['twig']->render('choose.html.twig', ['active' => 'choose']);
 })
 ->assert('_locale', 'fr|en')
 ->value('_locale', 'fr')

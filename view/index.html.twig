@@ -1,20 +1,4 @@
 {% include 'header.html.twig' %}
-<body>
-	<nav>
-		<div class="container">
-			<div class="nav-wrapper">
-				<ul id="nav-mobile" class="left side-nav">
-				</ul>				
-				<a href="#" class="brand-logo" title="">Pick'n'eat</a>				
-				<ul id="nav-mobile" class="right side-nav">
-					<li class="active"><a href="#"><i class="fa fa-home"></i></a></li>
-					<li><a href="{{ app.url_generator.generate('random') }}" title="Random"><i class="fa fa-random"></i></a></li>
-					<li><a href="{{ app.url_generator.generate('choose') }}" title="Choose"><i class="fa fa-pencil"></i></a></li>
-				</ul>
-				<a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
-			</div>
-		</div>
-	</nav>
 	<div class="container">
 		<div class="row">
 			<div id="intro_show" class="col s10 offset-s1">
@@ -23,7 +7,7 @@
 		</div>
 		<div class="row">
 			<div class="col s3 offset-s3">
-				<p><a href="{{ app.url_generator.generate('random') }}" class="waves-effect waves-light btn-large btn-black"><i class="fa fa-random"></i>{{ app.translator.trans('roll') }}</a></p>
+				<p><a href="{{ app.url_generator.generate('choose') }}" class="waves-effect waves-light btn-large btn-black"><i class="fa fa-random"></i>{{ app.translator.trans('roll') }}</a></p>
 			</div>
 			<div class="col s4">
 				<p>{{ app.translator.trans('roll_description') }}</p>
@@ -31,32 +15,16 @@
 		</div>
 		<div class="row">
 			<div class="col s3 offset-s3">
-				<p><a href="{{ app.url_generator.generate('choose') }}" class="waves-effect waves-light btn-large btn-green"><i class="fa fa-pencil"></i>{{ app.translator.trans('picky') }}</a></p>
+				<p><a href="{{ app.url_generator.generate('random') }}" class="waves-effect waves-light btn-large btn-green"><i class="fa fa-pencil"></i>{{ app.translator.trans('picky') }}</a></p>
 			</div>
 			<div class="col s4">
 				<p>{{ app.translator.trans('picky_description') }}</p>
 			</div>
 		</div>
-		<h4><a href="{{ path('home', {'_locale': 'fr'}) }}"><span class="flag-icon flag-icon-fr"></span></a><a href="{{ path('home', {'_locale': 'en'}) }}"><span class="flag-icon flag-icon-gb"></span></a></h4>
 	</div>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="{{ app.request.basepath }}/js/materialize.min.js"></script>
-	<script type="text/javascript">
-	var x = document.getElementById("demo");
-	document.getElementById("myBtn").addEventListener("click", getLocation);
-		function getLocation() {
-		    if (navigator.geolocation) {
-		        navigator.geolocation.getCurrentPosition(showPosition);
-		    } else { 
-		        x.innerHTML = "Geolocation is not supported by this browser.";
-		    }
-		}
-
-		function showPosition(position) {
-		    alert("Latitude: " + position.coords.latitude + 
-		    "<br>Longitude: " + position.coords.longitude);	
-		}
-    </script>
+	<script type="text/javascript" src="{{ app.request.basepath }}/js/index.js"></script>
 </body>
 </html>

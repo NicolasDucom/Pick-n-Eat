@@ -1,6 +1,6 @@
 $(function() {
-	$('#random_restaurant').on('click', function() {
-		$('#random').fadeOut(200);
+	$( document ).ready(function() {
+		$(".dropdown-button").dropdown();
 	    if (navigator.geolocation) {
 	        navigator.geolocation.getCurrentPosition(getRandomRestaurant);
 	    } else { 
