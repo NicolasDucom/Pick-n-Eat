@@ -1,0 +1,6 @@
+main_description: "Pick-n-eat is a website aimed at making an everyday choice simple, where am I going to eat today ? We have two tools at your disposal,one will select at random a choice from a list you provide,and the other will randomly choose a restaurant that is close by." 
+roll: "Roll the dice"
+roll_description: "With a couple of friends and having trouble deciding where to eat ? Add your choices to a list and let us make the choice for you !"
+picky: "I am picky today"
+picky_description: "No idea where to eat ? With your location we can propose a random choice!"
+

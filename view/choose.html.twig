@@ -12,9 +12,9 @@
 			<div class="nav-wrapper">
 				<a href="#" class="brand-logo">Pick'n'eat</a>
 				<ul id="nav-mobile" class="right side-nav">
-					<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-					<li><a href="random.html" title="Random"><i class="fa fa-random"></i></a></li>
-					<li class="active"><a href="choose.html" title="Choose"><i class="fa fa-pencil"></i></a></li>
+					<li><a href="{{ app.url_generator.generate('home') }}"><i class="fa fa-home"></i></a></li>
+					<li><a href="{{ app.url_generator.generate('random') }}" title="Random"><i class="fa fa-random"></i></a></li>
+					<li class="active"><a href="{{ app.url_generator.generate('choose') }}" title="Choose"><i class="fa fa-pencil"></i></a></li>
 				</ul>
 				<a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
 			</div>
