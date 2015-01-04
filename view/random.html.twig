@@ -26,34 +26,98 @@
 			<div class="col s12">
 				<h2>LET'S ROLL THE DICE.</h2>
 			</div>
-		</div>
 
+			<div id="results">
+				<div class="col s12">
+					<div class="card small" style="height: 470px;">
+						<div class="card-image" style="height: 320px;">
+							<img id="restaurant_image" src="assets/img/choose2.jpg">
+							<span id="restaurant_title" class="card-title"></span>
+						</div>  
+						<div class="card-content" style="background: white;">
+							<p>
+								Aesthetic organic irony, Cosby sweater swag try-hard meditation lo-fi blog flexitarian raw denim next level health goth mustache. Williamsburg cred authentic trust fund. Pickled seitan iPhone, semiotics mumblecore literally taxidermy. Pickled Marfa deep v, keffiyeh kitsch photo booth hella vinyl disrupt bitters Carles Wes Anderson forage. Cosby sweater swag try-hard meditation lo-fi blog flexitarian raw denim next level health goth mustache. Williamsburg cred authentic trust fund.	
+							</p>
+						</div>
+						<div class="card-action">
+							<a href="#">Website</a>
+							<a href="#">Call +33(0)1 23 45 67 89</a>
+						</div>
+					</div>
+					<p><a href="#" class="waves-effect waves-light btn-large btn-blue" id="replay_restaurant"><i class="fa fa-random"></i>Retry</a></p>
+				</div>
+			</div>
+			<div id="random">
+			<p><a href="#" class="waves-effect waves-light btn-large btn-green" id="random_restaurant"><i class="fa fa-random"></i>Random</a></p>
+			</div>
+			<div id="loading">
+			<div class="preloader-wrapper big active animated bounceOutLeft">
+			  <div class="spinner-layer spinner-blue">
+			    <div class="circle-clipper left">
+			      <div class="circle"></div>
+			    </div><div class="gap-patch">
+			      <div class="circle"></div>
+			    </div><div class="circle-clipper right">
+			      <div class="circle"></div>
+			    </div>
+			  </div>
+			  <div class="spinner-layer spinner-red">
+			    <div class="circle-clipper left">
+			      <div class="circle"></div>
+			    </div><div class="gap-patch">
+			      <div class="circle"></div>
+			    </div><div class="circle-clipper right">
+			      <div class="circle"></div>
+			    </div>
+			  </div>
+			  <div class="spinner-layer spinner-yellow">
+			    <div class="circle-clipper left">
+			      <div class="circle"></div>
+			    </div><div class="gap-patch">
+			      <div class="circle"></div>
+			    </div><div class="circle-clipper right">
+			      <div class="circle"></div>
+			    </div>
+			  </div>
+			  <div class="spinner-layer spinner-green">
+			    <div class="circle-clipper left">
+			      <div class="circle"></div>
+			    </div><div class="gap-patch">
+			      <div class="circle"></div>
+			    </div><div class="circle-clipper right">
+			      <div class="circle"></div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+		</div>
+	{% block javascripts %}	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="{{ app.request.basepath }}/js/materialize.min.js"></script>
+	<script type="text/javascript" src="{{ app.request.basepath }}/js/random.js"></script>
 	<script type="text/javascript">
-	var x = document.getElementById("demo");
-	document.getElementById("myBtn").addEventListener("click", getRandomRestaurant);
-		function getRandomRestaurant() {
-		    if (navigator.geolocation) {
-		        //navigator.geolocation.getCurrentPosition(showPosition);
-				$.ajax({
-					url: "{{ app.url_generator.generate('getRandom') }}/"navigator.geolocation.getCurrentPosition().coords.latitude"/"navigator.geolocation.getCurrentPosition().coords.longitude,
-					type: "GET",
-					dataType: "json",
-					success: function (data) {
-						alert(data);
-					}
-				});
-		    } else { 
-		        x.innerHTML = "Geolocation is not supported by this browser.";
-		    }
-		}
-
-		function showPosition(position) {
-		    alert("Latitude: " + position.coords.latitude + 
-		    "<br>Longitude: " + position.coords.longitude);	
-		}
-    </script>
+		function getRandomRestaurant(position) {
+		$('#loading').show(1, function() {
+				$('#loading').addClass('animated bounceIn');
+		});
+		$.ajax({
+			url: "{{ app.url_generator.generate('getRandom') }}",
+			type: "GET",
+			data: {longitude: position.coords.longitude,latitude:position.coords.latitude},
+			dataType: "json",
+			success: function (data) {
+				
+			},
+			complete: function(){
+        		$('#loading').fadeOut(420, function() {
+			});
+			$('#results').show(1, function() {
+				$('#results').addClass('animated bounceIn');
+			});
+      		}
+		});
+	}
 	</script>
+	{% endblock %}
 </body>
 </html>
