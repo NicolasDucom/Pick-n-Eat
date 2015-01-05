@@ -2,24 +2,35 @@
 	<div class="container">
 		<div class="row">
 			<div class="col s12">
-				<h2>{{ app.translator.trans('lets_roll') }}</h2>
+				<h2>{{ app.translator.trans('lets_find') }}</h2>
 			</div>
 		</div>
 			<div id="results">
 				<div class="col s12">
-					<div class="card small" style="height: 470px; background: white;">
-						<span id="restaurant_title" class="card-title"></span>
+					<div class="card small" style="height: 470px;">
+						<div class="card-image" style="height: 320px;">
+							<img id="restaurant_image" src="{{ app.request.basepath }}/img/choose2.jpg">
+							<span id="restaurant_title" class="card-title"></span>
+						</div> 
 						<div class="card-content" style="background: white;">
-							<div id="map-canvas"></div>
-							<span id="restaurant_address"></span>
-							<img id="restaurant_rating" src="">
+							<div class="row">
+								<div class="col s6">
+								<span id="restaurant_address"></span>
+								<img id="restaurant_rating" src="">
+								</div>
+								<div class="col s6">
+									<div id="map-canvas"></div>
+								</div>
+							</div>
 						</div>
-						<div class="card-action">
+						<div class="card-action" style="background: white;">
 							<a href="#" id="restaurant_website">{{ app.translator.trans('website') }}</a>
 							<a href="#" id="restaurant_phone"></a>
 						</div>
 					</div>
-					<p><a href="#" class="waves-effect waves-light btn-large btn-blue" id="replay_restaurant"><i class="fa fa-random"></i>{{ app.translator.trans('retry_random') }}</a></p>
+					<p>
+						<a href="#" class="waves-effect waves-light btn-large btn-blue" id="replay_restaurant"><i class="fa fa-random"></i>{{ app.translator.trans('retry_random') }}</a>
+					</p>
 				</div>
 			</div>
 			<div id="random">
@@ -68,18 +79,33 @@
 	<script type="text/javascript" src="{{ app.request.basepath }}/js/materialize.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
 	<script type="text/javascript">
-		function initialize() {
-	        var mapCanvas = document.getElementById('map-canvas');
-	        var mapOptions = {
-	          center: new google.maps.LatLng(0, 0),
-	          zoom: 13,
-	          mapTypeId: google.maps.MapTypeId.ROADMAP
-	        }
-	        var map = new google.maps.Map(mapCanvas, mapOptions)
-	    }
-	    google.maps.event.addDomListener(window, 'load', initialize);
+	var map;
+	var LatLng;
+	var marker;
+	function initialize() {
+		var mapCanvas = document.getElementById('map-canvas');
+		LatLng = new google.maps.LatLng(0, 0);
+		var mapOptions = {
+			center: LatLng,
+			zoom: 8,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+		map = new google.maps.Map(mapCanvas, mapOptions);
+		marker = new google.maps.Marker({
+			position: LatLng,
+			map: map,
+			title: 'myMarker'
+  		});
 
-		function getRandomRestaurant(position) {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(getRandomRestaurant);
+		} else { 
+			x.innerHTML = "Geolocation is not supported by this browser.";
+		}
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+	function getRandomRestaurant(position) {
 		$('#loading').show(1, function() {
 				$('#loading').addClass('animated bounceIn');
 		});
@@ -103,18 +129,23 @@
    				document.getElementById("restaurant_address").innerHTML = data.location.display_address;
    				document.getElementById("restaurant_rating").src = data.rating_img_url_large;
    				document.getElementById("restaurant_website").href = data.url;
-				gMap = new google.maps.Map(document.getElementById('map-canvas')); 
-				gMap.setCenter(new google.maps.LatLng(data.location.coordinate.latitude, data.location.coordinate.longitude));				
+				LatLng = new google.maps.LatLng(data.location.coordinate.latitude, data.location.coordinate.longitude);
+				marker.setPosition(LatLng)
+				map.setCenter(LatLng);				
 			},
 			complete: function(){
-        		$('#loading').fadeOut(420, function() {
-			});
+        	$('#loading').fadeOut(0);
 			$('#results').show(1, function() {
+				$('#results').removeClass();
 				$('#results').addClass('animated bounceIn');
 			});
       		}
 		});
 	}
+	$( document ).ready(function() {
+		initialize();
+		$(".dropdown-button").dropdown();
+	});
 	</script>
 	<script type="text/javascript" src="{{ app.request.basepath }}/js/random.js"></script>
 </body>

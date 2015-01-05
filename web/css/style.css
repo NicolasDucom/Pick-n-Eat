@@ -70,3 +70,7 @@ h2 {
 	text-align: center;
 	margin-top: 42px;
 }
+#map-canvas {
+	width: 500px;
+	height: 400px;
+}
