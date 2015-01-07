@@ -21,11 +21,7 @@
         "doctrine/dbal": ">=2.2.0,<2.4.0-dev",
         "swiftmailer/swiftmailer": "5.*",
         "gigablah/silex-oauth": "~0.1",
-        "j7mbo/twitter-api-php": "dev-master",
-        "happyr/linkedin-api-client": "dev-master",
-        "jcroll/foursquare-api-client": "1.0.*@dev",
         "banderon1/social-api": "1.0",
-        "twig/twig": ">=1.8,<2.0-dev",
-        "symfony/twig-bridge": "~2.3"
-    }
+        "twig/twig": ">=1.8,<2.0-dev"
+            }
 }
