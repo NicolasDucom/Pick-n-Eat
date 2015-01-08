@@ -48,7 +48,7 @@ $(function() {
 		}
 		
 		$('#results').removeClass();
-		$("#restaurant_image").attr("src", "assets/img/choose3.jpg");
+		//$("#restaurant_image").attr("src", "{{ app.request.basepath }}/img/choose3.jpg");
 		$('#restaurant_title').text('Restaurant '+ choosenRestaurant);
 		$('#results').addClass('animated shake');
 
