@@ -39,20 +39,12 @@
 		</div>
 			<div id="results">
 				<div class="col s12">
-					<div class="card small" style="height: 320px;">
-						<div class="card-image" style="height: 320px;">
-							<img id="restaurant_image" src="{{ app.request.basepath }}/img/choose2.jpg">
-							<span id="restaurant_title" class="card-title" style="color: white;"></span>
-						</div>  
-						{#<div class="card-content" style="background: white;">
-							<p>
-								Aesthetic organic irony, Cosby sweater swag try-hard meditation lo-fi blog flexitarian raw denim next level health goth mustache. Williamsburg cred authentic trust fund. Pickled seitan iPhone, semiotics mumblecore literally taxidermy. Pickled Marfa deep v, keffiyeh kitsch photo booth hella vinyl disrupt bitters Carles Wes Anderson forage. Cosby sweater swag try-hard meditation lo-fi blog flexitarian raw denim next level health goth mustache. Williamsburg cred authentic trust fund.	
+					<div class="card small" style="background: url({{ app.request.basepath }}/img/choose2.jpg)">
+						<div class="card-image" style=" text-align: center;">
+							<p style="margin-top: 42px;">
+								<span id="restaurant_title" class="card-title" style="position: relative; color: white; font-size: 42px;"></span>
 							</p>
-						</div>
-						<div class="card-action">
-							<a href="#">{{ app.translator.trans('website') }}</a>
-							<a href="#">+33(0)1 23 45 67 89</a>
-						</div>#}
+						</div>  
 					</div>
 					<p id="retry">
 						<a id="retry_button" class="waves-effect waves-light btn-large btn-black"><i class="fa fa-random"></i>{{ app.translator.trans('retry_choose') }}</a>

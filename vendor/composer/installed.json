@@ -2113,47 +2113,6 @@
         ]
     },
     {
-        "name": "j7mbo/twitter-api-php",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/J7mbo/twitter-api-php.git",
-            "reference": "ab76f1c1e6bf83f0a257216cbaf9932b7cc19a3f"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/J7mbo/twitter-api-php/zipball/ab76f1c1e6bf83f0a257216cbaf9932b7cc19a3f",
-            "reference": "ab76f1c1e6bf83f0a257216cbaf9932b7cc19a3f",
-            "shasum": ""
-        },
-        "time": "2013-10-03 10:04:59",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "files": [
-                "TwitterAPIExchange.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GNU Public License"
-        ],
-        "authors": [
-            {
-                "name": "James Mallison",
-                "homepage": "https://github.com/j7mbo/twitter-api-php"
-            }
-        ],
-        "description": "Simple PHP Wrapper for Twitter API v1.1 calls",
-        "homepage": "https://github.com/j7mbo/twitter-api-php",
-        "keywords": [
-            "api",
-            "php",
-            "twitter"
-        ]
-    },
-    {
         "name": "guzzle/guzzle",
         "version": "v3.9.2",
         "version_normalized": "3.9.2.0",
@@ -2761,5 +2720,46 @@
         ],
         "description": "Symfony Yaml Component",
         "homepage": "http://symfony.com"
+    },
+    {
+        "name": "j7mbo/twitter-api-php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/J7mbo/twitter-api-php.git",
+            "reference": "ab76f1c1e6bf83f0a257216cbaf9932b7cc19a3f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/J7mbo/twitter-api-php/zipball/ab76f1c1e6bf83f0a257216cbaf9932b7cc19a3f",
+            "reference": "ab76f1c1e6bf83f0a257216cbaf9932b7cc19a3f",
+            "shasum": ""
+        },
+        "time": "2013-10-03 10:04:59",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "TwitterAPIExchange.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GNU Public License"
+        ],
+        "authors": [
+            {
+                "name": "James Mallison",
+                "homepage": "https://github.com/j7mbo/twitter-api-php"
+            }
+        ],
+        "description": "Simple PHP Wrapper for Twitter API v1.1 calls",
+        "homepage": "https://github.com/j7mbo/twitter-api-php",
+        "keywords": [
+            "api",
+            "php",
+            "twitter"
+        ]
     }
 ]
