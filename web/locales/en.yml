@@ -1,6 +1,7 @@
 random: "Random"
 choose: "Choose"
 main_description: "Pick-n-eat's goal is to make the act of choosing a restaurant for lunch easier; simply put, it answers the usual question: where are we going to eat today ? We have two tools at your disposal,one will select at random a choice from a list you provide,and the other will randomly choose a restaurant that is close by." 
+main_subdescription: "Pick-n-eat uses Yelp's search api and your location to find a random restaurant close to you, it was made by Hugo Drecourt, Nicolas Ducom and Valentin Polo as a project for their english class (the main objective being to make a bilingual website). It was made using Silex, a PHP micro-Framework made by SensioLabs (the ones that brought you Symfony!)."
 roll: "Roll the dice"
 roll_description: "With a couple of friends and having trouble deciding where to eat ? Add your choices to a list and let us make the choice for you !"
 picky: "I am picky today"

@@ -31,12 +31,20 @@ h2 {
 }
 #intro_text {
 	position: absolute;
+	color: white;
+	background: rgba(153, 153, 153, 0.5);
+	margin: 15px 20px 19px 10px;
+	padding: 20px;
+}
+#intro_subtext {
+	position: absolute;
 	bottom: 0;
 	color: white;
 	background: rgba(153, 153, 153, 0.5);
 	margin: 15px 20px 19px 10px;
 	padding: 20px;
 }
+
 .btn-black {
 	background-color: #000;
 }
